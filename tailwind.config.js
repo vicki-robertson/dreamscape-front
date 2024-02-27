@@ -5,7 +5,18 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
+    theme: {
+      screens: {
+        desktop: '1440px',
+      },
+      colors: {
+        'blue': '#0079FF',
+        'red': '#FF0060',
+        'green': '#00DFA2',
+        'light-yellow': '#FBFDCE',
+        'white': 'FFFFFF',
+      },
+      
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
