@@ -16,12 +16,16 @@ module.exports = {
         'light-yellow': '#FBFDCE',
         'white': 'FFFFFF',
       },
-      
+      fontSize: {
+        xs: ['16px', 'font-normal'],
+        s: ['20px', 'font-normal'],
+        sb: ['20px', 'font-bold'],
+        m: ['25px', 'font-normal'],
+        mb: ['25px', 'font-bold'],
+        l: ['40px', 'font-bold']
+      },
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
   },
