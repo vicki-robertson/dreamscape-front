@@ -17,12 +17,10 @@ module.exports = {
         'white': 'FFFFFF',
       },
       fontSize: {
-        xs: ['16px', 'font-normal'],
-        s: ['20px', 'font-normal'],
-        sb: ['20px', 'font-bold'],
-        m: ['25px', 'font-normal'],
-        mb: ['25px', 'font-bold'],
-        l: ['40px', 'font-bold']
+        xs: ['16px'],
+        s: ['20px'],
+        m: ['25px'],
+        l: ['40px'],
       },
     extend: {
       backgroundImage: {
