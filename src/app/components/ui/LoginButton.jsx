@@ -4,12 +4,14 @@ import LoginIcon from '../../../../public/assets/icons/Avatar-icon.svg'
 export default function LoginButton() {
   return (
     <div className="">
-        <Image className=""
-          src={LoginIcon}
-          width={40}
-          height={40}
-          alt="Login button"
-        />
+      <a href="">
+          <Image className=""
+            src={LoginIcon}
+            width={40}
+            height={40}
+            alt="Login button"
+          />
+      </a>
     </div>
   )
 }

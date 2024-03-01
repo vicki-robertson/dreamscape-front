@@ -1,16 +1,11 @@
-import HomeButton from "@/app/components/ui/HomeButton";
-import LoginButton from "@/app/components/ui/LoginButton";
-import Logo from "@/app/components/ui/Logo";
-import SearchButton from "@/app/components/ui/SearchButton";
+import NavbarMobile from "@/app/components/Header/NavbarMobile";
+import Header from "@/app/components/Header/Header";
 
-
-export default function Header() {
+export default function Home() {
     return (
-        <div>
-            <Logo/>
-            <HomeButton/>
-            <LoginButton/>
-            <SearchButton/>
-        </div>
+        <>
+            <Header/>
+            <NavbarMobile />
+        </>
     )
 }
