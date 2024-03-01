@@ -1,6 +1,7 @@
 import HomeButton from "@/app/components/ui/HomeButton";
 import LoginButton from "@/app/components/ui/LoginButton";
 import Logo from "@/app/components/ui/Logo";
+import SearchButton from "@/app/components/ui/SearchButton";
 
 
 export default function Header() {
@@ -8,7 +9,8 @@ export default function Header() {
         <div>
             <Logo/>
             <HomeButton/>
-            <LoginButton />
+            <LoginButton/>
+            <SearchButton/>
         </div>
     )
 }
