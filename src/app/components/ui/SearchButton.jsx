@@ -3,13 +3,13 @@ import SearchIcon from '../../../../public/assets/icons/Glass-icon.svg'
 
 export default function SearchButton() {
   return (
-    <div className="">
+    <button className="">
         <Image className=""
           src={SearchIcon}
-          width={40}
-          height={40}
+          width={23}
+          height={23}
           alt="Search button"
         />
-    </div>
+    </button>
   )
 }

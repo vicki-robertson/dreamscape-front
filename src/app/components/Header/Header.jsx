@@ -1,15 +1,14 @@
-import HomeButton from "@/app/components/ui/HomeButton";
-import LoginButton from "@/app/components/ui/LoginButton";
 import Logo from "@/app/components/ui/Logo";
-import SearchButton from "@/app/components/ui/SearchButton";
+import SearchBar from "../ui/SearchBar";
 
 
 export default function Header() {
     return (
-        <div className="">
+        <div className="flex flex-col items-center pt-[21px]">
             <Logo/>
-            <HomeButton/>
-            <LoginButton/>
+            <div className="pt-8">
+                <SearchBar/>
+            </div>
         </div>
     )
 }
