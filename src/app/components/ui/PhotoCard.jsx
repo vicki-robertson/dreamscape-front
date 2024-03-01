@@ -11,9 +11,8 @@ function PhotoCard() {
         height=
         alt= 
       />
-      <h3 className={styles.doctorOrdinalNumber}>{doctor.doctor}</h3>
-      <h3 className={styles.actorName}>{doctor.actor}</h3>
-      <time className={styles.screenTime}>{doctor.screen_time}</time>
+      <h3 className=</h3>
+      <h3 className=</h3>
       <br />
     </article>
   );
