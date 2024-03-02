@@ -7,14 +7,15 @@ module.exports = {
   ],
     theme: {
       screens: {
-        desktop: '1440px',
+        mobile: '300px',
+        desktop: '1000px',
       },
       colors: {
         'blue': '#0079FF',
         'red': '#FF0060',
         'green': '#00DFA2',
         'light-yellow': '#FBFDCE',
-        'white': 'FFFFFF',
+        'white': '#FFFFFF',
       },
       fontSize: {
         xs: ['16px'],
