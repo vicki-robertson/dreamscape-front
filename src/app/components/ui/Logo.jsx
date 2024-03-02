@@ -3,7 +3,7 @@ import LogoImage from '../../../../public/assets/icons/Logo.svg'
 
 export default function Logo() {
   return (
-    <div className="">
+    <div className="pb-4">
       <a href="/">
         <Image className=""
           src={LogoImage}
