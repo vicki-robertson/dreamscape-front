@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       </Head>
       <Header/>
       <body className={jaldi.className}>{children}</body>
-      <NavbarMobile/>
+      <NavbarMobile />
     </html>
   );
 }
