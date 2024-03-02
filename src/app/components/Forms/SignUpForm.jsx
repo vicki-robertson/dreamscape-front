@@ -1,8 +1,32 @@
-import React from "react";
+"use client"
+
+import React, {useState} from "react";
 import InputBox from "../ui/InputBox";
 import DoubleButton from "../ui/DoubleButton";
+import axios from "axios";
 
-export default function SigninForm() {
+const SignUpForm = () => {
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:8000/api/register', formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  };
+
   return (
     <div className="flex flex-col w-[370px] h-[487px] rounded-2xl border-4 items-center border-light-yellow ">
       <h2 className="text-m text-red font-bold pt-3 ">Registro de usuario</h2>
@@ -27,3 +51,5 @@ export default function SigninForm() {
     </div>
   );
 }
+
+export default SignUpForm;

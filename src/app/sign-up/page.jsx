@@ -1,7 +1,7 @@
 import Header from '../components/Header/Header'
-import SigninForm from '../components/Forms/SigninForm'
+import SigninForm from '../components/Forms/SignUpForm'
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <>
         <Header/>
