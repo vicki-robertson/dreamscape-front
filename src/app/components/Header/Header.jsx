@@ -1,14 +1,22 @@
 import Logo from "@/app/components/ui/Logo";
 import SearchBar from "../ui/SearchBar";
+import HomeButton from "../ui/HomeButton";
+import LoginButton from "../ui/LoginButton";
 
 
 export default function Header() {
     return (
-        <div className="flex flex-col items-center pt-[21px]">
-            <Logo/>
-            <div className="pt-8">
-                <SearchBar/>
-            </div>
-        </div>
+        <>
+            <nav className="flex mobile:flex-col mobile:items-center mobile:pt-[21px] desktop:flex-row desktop:justify-between desktop:mx-[70px]">
+                <Logo/>
+                <li className="mobile:pt-8 list-none desktop:flex">
+                    <SearchBar/>
+                    <div className="mobile:hidden desktop:flex gap-4 pl-4">
+                        <HomeButton/>
+                        <LoginButton/> 
+                    </div>
+                </li>
+            </nav>
+       </>        
     )
 }
