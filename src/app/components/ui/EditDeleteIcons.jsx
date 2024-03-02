@@ -5,9 +5,9 @@ import Image from "next/image";
 function EditDeleteIcons() {
 
   return (
-    <div className="flex gap-3">
+    <nav className="flex gap-3">
     <button className="">
-        <Image className="relative"
+        <Image className="relative mt-1"
           src={EditIcon}
           width={36}
           height={36}
@@ -17,12 +17,12 @@ function EditDeleteIcons() {
     <button className="">
         <Image className="relative"
           src={DeleteIcon}
-          width={27}
+          width={28}
           height={36}
           alt="buton para borrar"
         />
     </button>
-    </div>
+    </nav>
   );
 }
 
