@@ -1,4 +1,3 @@
-
 import React from 'react'
 import prevButton from '../../../../public/assets/icons/Previous-button.svg';
 import nextButton from '../../../../public/assets/icons/Next-button.svg';
