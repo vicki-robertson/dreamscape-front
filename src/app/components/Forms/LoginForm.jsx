@@ -41,8 +41,8 @@ const StartSession = () => {
        <label for='password' className='text-blue text-s font-bold pb-1 pt-6'>Contraseña</label>
        <InputBox size='m' placeholder="Escribe tu contraseña..." type="password" name="password" value={formData.password} onChange={handleChange} /> 
        <div className='flex flex-row justify-center pt-[30px] gap-4'>
-          <Button buttonColor="bg-green" buttonText="Aceptar" onClick={handleSubmit} type="submit" />
-          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleSubmit} type="submit" />
+          <Button buttonColor="bg-green" buttonText="Aceptar"  type="submit" />
+          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleCancel}  />
        </div>
       </form>
     </div>
