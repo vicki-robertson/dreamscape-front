@@ -2,10 +2,10 @@
 
 import React, {useState} from "react";
 import InputBox from "../ui/InputBox";
-import DoubleButton from "../ui/DoubleButton";
+import Button from "../ui/Button";
 import axios from "axios";
 
-const SignUpForm = () => {
+const Register = () => {
 
   const [formData, setFormData] = useState({
     name: '',
@@ -44,12 +44,13 @@ const SignUpForm = () => {
         </label>
         <InputBox size="m" placeholder="Escribe tu contraseña..." />
       </form>
-      <div className="justify-center pt-8">
-        <DoubleButton/>
-        <p className="text-blue font-bold text-s pt-4">¿Ya tienes cuenta? Accede <a href="/login" className="text-green">aquí</a></p>
+      <div className="flex gap-4 justify-center pt-8">
+          <Button buttonColor="bg-green" buttonText="Aceptar" onClick={handleSubmit} type="submit" />
+          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleSubmit} type="submit" />
       </div>
+      <span className="text-blue font-bold text-s pt-4">¿Ya tienes cuenta? Accede <a href="/login" className="text-green">aquí</a></span>
     </div>
   );
 }
 
-export default SignUpForm;
+export default Register;

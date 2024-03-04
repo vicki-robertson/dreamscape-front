@@ -2,8 +2,8 @@
 
 import React, { useState} from 'react';
 import InputBox from '../ui/InputBox';
-import DoubleButton from '../ui/DoubleButton';
 import axios from 'axios';
+import Button from '../ui/Button';
 
 const StartSession = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +25,7 @@ const StartSession = () => {
 
       if(response.status === 200) {
         setMessage(response.data.message);
+        console.log('Form submitted!')
       }
     } catch (error) {
       console.error(error.response.data);
@@ -37,10 +38,11 @@ const StartSession = () => {
       <form onSubmit={handleSubmit} className='border-t-2 border-red flex flex-col'>
        <label for='email' className='text-blue text-s font-bold pb-1 pt-6'>Email</label>
        <InputBox size='m' placeholder="Escribe tu email..." type="email" name="email" value={formData.email} onChange={handleChange}/> 
-       <label for='password' className='text-blue text-s font-bold pb-1 pt-6'>Email</label>
+       <label for='password' className='text-blue text-s font-bold pb-1 pt-6'>Contraseña</label>
        <InputBox size='m' placeholder="Escribe tu contraseña..." type="password" name="password" value={formData.password} onChange={handleChange} /> 
-       <div className='flex flex-row justify-center pt-[30px]'>
-          <DoubleButton/>
+       <div className='flex flex-row justify-center pt-[30px] gap-4'>
+          <Button buttonColor="bg-green" buttonText="Aceptar" onClick={handleSubmit} type="submit" />
+          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleSubmit} type="submit" />
        </div>
       </form>
     </div>
