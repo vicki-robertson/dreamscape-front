@@ -17,6 +17,17 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value});
   };
 
+  const [loading, setLoading] = useState(false);
+
+  const handleCancel = () => {
+    setFormData({
+      name: '',
+      email: '',
+      password: ''
+    });
+    setLoading(false);
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
     try {
@@ -30,23 +41,23 @@ const Register = () => {
   return (
     <div className="flex flex-col w-[370px] h-[487px] rounded-2xl border-4 items-center border-light-yellow ">
       <h2 className="text-m text-red font-bold pt-3 ">Registro de usuario</h2>
-      <form action="" className="border-t-2 border-red flex flex-col">
-        <label for='name' className='text-blue text-s font-bold pb-1 pt-6'>Nombre</label>
-        <InputBox size='m' placeholder="Escribe tu nombre..."/> 
+      <form onSubmit={handleSubmit} className="border-t-2 border-red flex flex-col">
+        <label htmlFor='name' className='text-blue text-s font-bold pb-1 pt-6'>Nombre</label>
+        <InputBox size='m' placeholder="Escribe tu nombre..." onChange={handleChange} type="name" name="name"/> 
        
-        <label for="email" className="text-blue text-s font-bold pb-1 pt-6">
+        <label htmlFor="email" className="text-blue text-s font-bold pb-1 pt-6" >
           Email
         </label>
-        <InputBox size="m" placeholder="Escribe tu email..." />
+        <InputBox size="m" placeholder="Escribe tu email..." onChange={handleChange} type="email" name="email" />
 
-        <label for="password" className="text-blue text-s font-bold pb-1 pt-6">
+        <label htmlFor="password" className="text-blue text-s font-bold pb-1 pt-6">
           Contraseña
         </label>
-        <InputBox size="m" placeholder="Escribe tu contraseña..." />
+        <InputBox size="m" placeholder="Escribe tu contraseña..." onChange={handleChange} type="password" name="password" />
       </form>
       <div className="flex gap-4 justify-center pt-8">
-          <Button buttonColor="bg-green" buttonText="Aceptar" onClick={handleSubmit} type="submit" />
-          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleSubmit} type="submit" />
+          <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
+          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleCancel} />
       </div>
       <span className="text-blue font-bold text-s pt-4">¿Ya tienes cuenta? Accede <a href="/login" className="text-green">aquí</a></span>
     </div>
