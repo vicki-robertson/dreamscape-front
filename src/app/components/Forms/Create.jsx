@@ -16,6 +16,8 @@ return (
        <InputBox size='m' placeholder="Escribe titulo..." type="text" name="titulo" /*value={formData.email} onChange={handleChange}*//> 
        <label for='Ubicación' className='text-blue text-s font-bold pb-1 pt-6'>Ubicación</label>
        <InputBox size='m' placeholder="Escribe ubicación..." type="text" name="Ubicación" /*value={formData.password} onChange={handleChange}*/ /> 
+       <label for='Image' className='text-blue text-s font-bold pb-1 pt-6 mt-4'>Imagen</label>
+       <InputBox size='m' className={'mb-8 content=""'} placeholder="Sube una imagen ..." type="file" id='image' accept="image/*" name="Image" /*value={formData.password} onChange={handleChange}*/ /> 
         <DoubleButton/>
     </form>
     </div>
