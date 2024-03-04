@@ -23,7 +23,7 @@ return (
     </div>
           <div class="basis-1/2 items-center w-[300px] mt-20">
           <label for='razon' className='text-blue text-s font-bold pb-1 pt-6'>¿Por qué quieres viajar allí?</label>
-       <InputBox size='xl' placeholder="La explicación del porque quieres viajar allí antes  de 500 caracteres." type="text" name="razon" /*value={formData.password} onChange={handleChange}*/ /> 
+       <InputBox size='xl' placeholder="La explicación del porque quieres viajar allí antes  de 500 caracteres." id="razon" type="text" name="razon" /*value={formData.password} onChange={handleChange}*/ /> 
           </div>
     </div>
         </section>

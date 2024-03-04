@@ -49,3 +49,7 @@ input[type="file"]::file-selector-button {
   margin-right: 16px;
   transition: background-color 200ms;
 }
+#razon::placeholder {
+  text-wrap: pretty;
+  font-size: 16px;
+}
