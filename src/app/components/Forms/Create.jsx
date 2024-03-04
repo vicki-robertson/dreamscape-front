@@ -9,7 +9,7 @@ const CreateDestination = () => {
 return (
     <section className='flex items-center justify-center pt-[144px] pb-[171px] desktop:pt-[150px] desktop:pb-[251px]'>
     <div className='flex flex-row w-[733px] h-[509px] rounded-2xl border-4 border-light-yellow '>
-    <div class=" items-center w-[300px] basis-1/2 ">
+    <div class=" items-center w-[300px] basis-1/2 p-4">
         <h2 className='text-m text-red font-bold pt-3 '>Crear destino</h2>
         <form /*onSubmit*/ className='border-t-2 border-red flex flex-col'>
        <label for='titulo' className='text-blue text-s font-bold pb-1 pt-6'>Titulo</label>
