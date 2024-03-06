@@ -1,24 +1,33 @@
 "use client"
-import Header from './components/Header/Header';
+
+import Header from '../app/components/Header/Header';
+import PaginationButtons from './components/ui/PaginationButtons';
 import PhotoCard from './components/ui/PhotoCard';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function Page() {
-  const [destinos, setDestinos] = useState([]);
+const [destinations, setDestinations] = useState([]);
+const [currentPage, setCurrentPage] = useState(1);
+const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (page) => {
       try {
-        const response = await axios.get('http://localhost:8000/api/');
-        setDestinos(response.data.data);
+        const response = await axios.get(`http://localhost:8000/api/?page=${page}`);
+        setDestinations(response.data.data);
+        setTotalPages(response.data.last_page);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchData(currentPage);
+  }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
@@ -31,6 +40,11 @@ export default function Page() {
             </div>
           ))}
         </div>
+        <PaginationButtons
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
       </article>
     </>
   )

@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import prevButton from '../../../../public/assets/icons/Previous-button.svg';
 import nextButton from '../../../../public/assets/icons/Next-button.svg';
 import Image from 'next/image';
 
-export default function PaginationButtons() {
+export default function PaginationButtons({ currentPage, totalPages, onPageChange }) {
+
+    const fetchData = async (page) => {
+        try {
+            const apiUrl = `http://localhost:8000/api/destinations?page=${page}`;
+            const response = await fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Origin': 'http://localhost:3000',
+                },
+            });
+            const data = await response.json();
+
+            setTotalPages(data.last_page);
+            setCurrentPage(data.current_page);
+            // Puedes manejar otros datos según sea necesario
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            // Manejo de errores
+        }
+    };
+
   return (
     <div className='flex flex-row gap-6 items-center'>
         <a>
