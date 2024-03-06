@@ -11,6 +11,11 @@ export default function RegisterForm() {
     email: "",
     password: ""
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -23,7 +28,6 @@ export default function RegisterForm() {
       email: "",
       password: ""
     });
-    setLoading(false);
   };
 
   const handleSubmit = async (e) => {
@@ -33,12 +37,21 @@ export default function RegisterForm() {
       setMessage(response.data.message);
       console.log(message)
     } catch (error) {
-      setMessage("Error: " + error.response.data.message);
+      if (error.response && error.response.data.errors) {
+        const errorData = error.response.data.errors;
+        setErrors({
+          name: errorData.name ? errorData.name : "",
+          email: errorData.email ? errorData.email : "",
+          password: errorData.password ? errorData.password : ""
+        });
+      } else {
+        setMessage("Error: " + error.response.data.message);
+      }
     }
   };
 
   return (
-    <div className="flex flex-col w-[370px] h-[487px] rounded-2xl border-4 items-center border-light-yellow">
+    <div className="flex flex-col w-[370px] min-h-[487px] rounded-2xl border-4 items-center border-light-yellow pb-14">
       <h2 className="text-m text-red font-bold pt-3">Registro de usuario</h2>
       <form onSubmit={handleSubmit} className="border-t-2 border-red flex flex-col">
         <label htmlFor="name" className="text-blue text-s font-bold pb-1 pt-6">
@@ -52,6 +65,8 @@ export default function RegisterForm() {
           value={formData.name}
           onChange={handleChange}
         />
+        {errors.name && <p className="text-red">{errors.name}</p>}
+
 
         <label htmlFor="email" className="text-blue text-s font-bold pb-1 pt-6">
           Email
@@ -59,11 +74,11 @@ export default function RegisterForm() {
         <InputBox
           size="m"
           placeholder="Escribe tu email..."
-          type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
         />
+        {errors.email && <p className="text-red">{errors.email}</p>}
 
         <label htmlFor="password" className="text-blue text-s font-bold pb-1 pt-6">
           Contraseña
@@ -76,6 +91,7 @@ export default function RegisterForm() {
           value={formData.password}
           onChange={handleChange}
         />
+        {errors.password && <p className="text-red">{errors.password}</p>}
 
         <div className="flex gap-4 justify-center pt-8">
           <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
