@@ -1,7 +1,8 @@
 import Image from "next/image";
 import QuestionMark from "../../../../public/assets/icons/Info-icon.svg";
 import PhotoCard from "./PhotoCard";
-import EditDeleteIcons from "./EditDeleteIcons";
+import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
 
 function LoggedCard() {
   return (
@@ -15,7 +16,8 @@ function LoggedCard() {
       />
       <PhotoCard />
       <div className="float-right relative bottom-[74px] right-6">
-      <EditDeleteIcons/>
+      <EditButton/>
+      <DeleteButton />
       </div>
     </article>
   );
