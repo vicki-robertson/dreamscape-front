@@ -8,6 +8,12 @@ const SearchBar = ({ onSearch }) => {
   const handleSearch = () => {
     onSearch(searchTerm); 
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
   
   return (
     <div className="relative w-[200px]">
@@ -17,6 +23,7 @@ const SearchBar = ({ onSearch }) => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
       />
       <div className="absolute inset-y-0 right-0 flex items-center pr-4">
         <SearchButton onClick={handleSearch} /> 
