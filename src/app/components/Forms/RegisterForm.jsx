@@ -17,6 +17,15 @@ export default function RegisterForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCancel = () => {
+    setFormData({
+      name: "",
+      email: "",
+      password: ""
+    });
+    setLoading(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -70,7 +79,7 @@ export default function RegisterForm() {
 
         <div className="flex gap-4 justify-center pt-8">
           <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
-          <Button buttonColor="bg-red" buttonText="Cancelar" />
+          <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleCancel}/>
         </div>
       </form>
     </div>
