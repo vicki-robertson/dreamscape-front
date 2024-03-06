@@ -1,6 +1,8 @@
 "use client"
+"use client"
 import Image from "next/image";
 
+function PhotoCard({data}) {
 function PhotoCard({data}) {
 
   return (
