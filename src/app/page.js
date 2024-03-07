@@ -14,6 +14,7 @@ const [totalPages, setTotalPages] = useState(1);
   useEffect(() => {
     const fetchData = async (page) => {
       try {
+        console.log('Fetching data for page:', page);
         const response = await axios.get(`http://localhost:8000/api/?page=${page}`);
         setDestinations(response.data.data);
         setTotalPages(response.data.last_page);
@@ -26,17 +27,19 @@ const [totalPages, setTotalPages] = useState(1);
   }, [currentPage]);
 
   const handlePageChange = (page) => {
+    console.log('Changing to page:', page);
     setCurrentPage(page);
   };
+  console.log('Destinations:', destinations);
 
   return (
     <>
       <Header/>
-      <article className="flex justify-center items-center h-full">
+      <article className="flex justify-center items-center flex-col h-full">
         <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
-          {destinos.map((destino, index) => (
+          {destinations.map((destination, index) => (
             <div key={index} className="flex justify-center">
-              <PhotoCard data={destino} />
+              <PhotoCard data={destination} />
             </div>
           ))}
         </div>
