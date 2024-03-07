@@ -97,6 +97,8 @@ export default function RegisterForm() {
           <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
           <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleCancel}/>
         </div>
+        <br></br>
+        <span className="text-blue text-center text-s font-bold">¿Ya tienes cuenta? Accede <a href="/login" className="text-green">aquí</a></span>
       </form>
     </div>
   );
