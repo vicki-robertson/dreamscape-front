@@ -20,7 +20,7 @@ export default function PaginationButtons({ currentPage, totalPages, onPageChang
     };
 
     return (
-        <div className='flex flex-row gap-6 items-center'>
+        <div className='desktop:flex flex-row gap-6 items-center mb-4 mobile:hidden'>
             <a onClick={handlePrevPage} disabled={currentPage === 1}>
                 <Image
                     src={prevButton}
