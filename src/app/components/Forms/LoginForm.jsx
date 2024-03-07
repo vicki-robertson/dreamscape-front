@@ -77,6 +77,8 @@ export default function StartSession() {
         {errors.password && <p className="text-red">{errors.password}</p>}
         <div className='flex flex-row justify-center pt-[30px] gap-4'>
           <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
+          {response.data.message && <LoginModal />}
+
           <Button buttonColor="bg-red" buttonText="Cancelar" onClick={handleCancel} />
         </div>
       </form>
