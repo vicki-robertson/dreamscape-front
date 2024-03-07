@@ -12,6 +12,7 @@ export default function Page() {
   const [searchInput, setSearchInput] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [error, setError] = useState("");
 
 
   useEffect(() => {
@@ -33,16 +34,7 @@ export default function Page() {
     console.log('Changing to page:', page);
     setCurrentPage(page);
   };
-  console.log('Destinations:', destinations);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/api/");
-      setDestinations(response.data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   const handleSearch = async (searchTerm) => {
     setSearchInput(searchTerm);
@@ -52,9 +44,10 @@ export default function Page() {
       try {
         const response = await axios.get(`http://localhost:8000/api/search?search=${searchTerm}`);
         setSearchResults(response.data);
+        setError("");
       } catch (error) {
-        console.error('Error searching:', error);
         setSearchResults([]);
+        setError(error.response.data.message);
       }
     }
   };
@@ -65,7 +58,7 @@ export default function Page() {
       <article className="flex flex-col justify-center items-center h-full">
         <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
           {searchInput !== "" && searchResults.length === 0 ? (
-            <p className="text-blue">{response.data.msg}</p>
+            <p className="text-blue">{error}</p>
           ) : (
             (searchInput === "" ? destinations : searchResults).map(
               (destination, index) => (
