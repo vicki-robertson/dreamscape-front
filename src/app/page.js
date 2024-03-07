@@ -40,11 +40,11 @@ export default function Page() {
 
   return (
     <>
-      <Header onSearch={handleSearch} />
+      <Header onSearch={handleSearch} showSearchBar={true}/>
       <article className="flex justify-center items-center h-full">
         <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
           {searchInput !== "" && searchResults.length === 0 ? (
-            <p>There are no results that match</p>
+            <p>No hay destinos relacionados</p>
           ) : (
             (searchInput === "" ? destinations : searchResults).map(
               (destination, index) => (

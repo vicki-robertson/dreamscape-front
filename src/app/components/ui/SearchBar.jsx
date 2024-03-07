@@ -1,3 +1,5 @@
+"use client"
+
 import InputBox from "./InputBox";
 import SearchButton from "./SearchButton";
 import { useState } from 'react';
