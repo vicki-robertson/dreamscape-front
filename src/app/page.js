@@ -1,32 +1,18 @@
-<<<<<<< HEAD
 "use client";
 
 import Header from "./components/Header/Header";
 import PhotoCard from "./components/ui/PhotoCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PaginationButtons from './components/ui/PaginationButtons';
 
 export default function Page() {
   const [destinations, setDestinations] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-=======
-"use client"
-
-import Header from '../app/components/Header/Header';
-import PaginationButtons from './components/ui/PaginationButtons';
-import PhotoCard from './components/ui/PhotoCard';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-
-export default function Page() {
-const [destinations, setDestinations] = useState([]);
-const [currentPage, setCurrentPage] = useState(1);
-const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async (page) => {
@@ -48,7 +34,6 @@ const [totalPages, setTotalPages] = useState(1);
     setCurrentPage(page);
   };
   console.log('Destinations:', destinations);
->>>>>>> feature-pagination
 
   const fetchData = async () => {
     try {
@@ -76,12 +61,11 @@ const [totalPages, setTotalPages] = useState(1);
 
   return (
     <>
-<<<<<<< HEAD
       <Header onSearch={handleSearch} showSearchBar={true}/>
-      <article className="flex justify-center items-center h-full">
+      <article className="flex flex-col justify-center items-center h-full">
         <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
           {searchInput !== "" && searchResults.length === 0 ? (
-            <p>No hay destinos relacionados</p>
+            <p className="text-blue">{response.data.msg}</p>
           ) : (
             (searchInput === "" ? destinations : searchResults).map(
               (destination, index) => (
@@ -91,16 +75,6 @@ const [totalPages, setTotalPages] = useState(1);
               )
             )
           )}
-=======
-      <Header/>
-      <article className="flex justify-center items-center flex-col h-full">
-        <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
-          {destinations.map((destination, index) => (
-            <div key={index} className="flex justify-center">
-              <PhotoCard data={destination} />
-            </div>
-          ))}
->>>>>>> feature-pagination
         </div>
         <PaginationButtons
         currentPage={currentPage}
