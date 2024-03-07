@@ -15,8 +15,8 @@ function LoggedCard() {
         alt={"signo de interrogación"}
       />
       <PhotoCard />
-      <div className="float-right relative bottom-[74px] right-6">
-      <EditButton/>
+      <div className="float-right relative bottom-[74px] right-6 gap-3">
+      <EditButton />
       <DeleteButton />
       </div>
     </article>
