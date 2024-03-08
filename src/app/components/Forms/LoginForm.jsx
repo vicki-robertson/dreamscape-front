@@ -39,7 +39,7 @@ export default function StartSession() {
 
       if (response.status === 200) {
         setMessage(response.data.message);
-        console.log('Form submitted!')
+        console.log(response.data.message);
       }
     } catch (error) {
       if (error.response && error.response.data.errors) {
