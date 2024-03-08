@@ -44,7 +44,8 @@ This project used the following technologies and their specific versions:
 - Tinker - 2.8
 - Faker - 1.9.1
 - PHP Unit - 10.1
-- MySQL - 
+- Composer - 2.6.6
+- MySQL - 8.0
 - Xampp - 3.3.0
 
 
