@@ -12,6 +12,7 @@ Alongside [this backend repository](https://github.com/Jasz-17/dreamscape_back),
 - [Images](#images)
 - [Description](#description)
 - [Technologies](#technologies)
+- [Database Diagram](#databasediagram)
 - [Testing](#testing)
 - [Contributors](#contributors)
 
@@ -48,12 +49,12 @@ This project used the following technologies and their specific versions:
 - MySQL - 8.0
 - Xampp - 3.3.0
 
+## Database Diagram
+
+   
+![Database diagram](/public/assets/icons/database.png)
 
 ## Testing
-   
-   
-
-
 
 ## Contributors
 
