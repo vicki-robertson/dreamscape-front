@@ -6,7 +6,7 @@ import NavbarMobile from "./components/Header/NavbarMobile";
 export const jaldi = Jaldi({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata = {
-  title: "DreamScape",
+  title: "Happy Travel",
   description: "Happy Travel, el app de planificación de viajes hecho por DreamScape",
 };
 
