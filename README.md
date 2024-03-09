@@ -1,11 +1,9 @@
 
 # DREAMSCAPE TRAVEL  
 
-Alongside [this backend repository](https://github.com/Jasz-17/dreamscape_back), this fullstack project involves the creation of a website that allows users to post, edit, and delete their dream holiday destinations as well as view the holiday plans of other users. 
+Alongside [this backend repository](https://github.com/Jasz-17/dreamscape_back), this fullstack project involves the creation of a responsive website that allows users to post, edit, and delete their dream holiday destinations as well as view the holiday plans of other users. 
 
-
-
-<!-- image -->
+![home page](public/assets/images/main-image.png)
 
 ## Table of Contents
 
@@ -18,11 +16,18 @@ Alongside [this backend repository](https://github.com/Jasz-17/dreamscape_back),
 
 ## Images
 
+![sign-up form](public/assets/images/sign-up.png)
+![details required message](public/assets/images/details-req.png)
+![invalid email message](public/assets/images/invalid-email.png)
+![already registered message](public/assets/images/registered.png)
+![log-in form](public/assets/images/log-in.png)
+![destination not found message](public/assets/images/not-found.png)
+![search function working](public/assets/images/search.png)
 
 
 ## Description
 
-This project involved the creation of multiple-page responsive website, using React, Next.js, PHP, and Laravel. The site design, as specified by the fictional client 'Happy Travel' via a detailed [Figma mock-up](https://www.figma.com/file/twPJOzEo5hZJZ7srsEt10y/HappyTravel?type=design&node-id=4-1343&mode=design&t=Ws3hTyk3DDJ71bok-0), features various unique elements and pages. These include a search bar for finding holiday destinations with ease, a registration form for new users, and a login form for existing users. The principle content of the site is a gallery of personalized holiday destinations that registered users are able to add to, edit, and delete, and users without an account are able to view and search. 
+This project involved the creation of multiple-page responsive website, using React, Next.js, PHP, and Laravel. The site design, as specified by the fictional client 'Happy Travel' via a detailed [Figma mock-up](https://www.figma.com/file/twPJOzEo5hZJZ7srsEt10y/HappyTravel?type=design&node-id=4-1343&mode=design&t=Ws3hTyk3DDJ71bok-0), features various unique elements and pages. These include a search bar for finding holiday destinations with ease, a registration form for new users, and a login form for existing users. The site itself features a gallery of personalized holiday destinations that registered users are able to add to, edit, and delete, and users without an account are able to view and search. 
 
 
 ## Technologies 
@@ -52,7 +57,9 @@ This project used the following technologies and their specific versions:
 ## Database Diagram
 
    
-![Database diagram](/public/assets/icons/database.png)
+![Database diagram](/public/assets/images/database.png)
+
+
 
 ## Testing
 
