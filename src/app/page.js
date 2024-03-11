@@ -7,6 +7,7 @@ import axios from "axios";
 import PaginationButtons from './components/ui/PaginationButtons';
 import {API_ENDPOINT} from "./services/index";
 
+
 export default function Page() {
   const [destinations, setDestinations] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -14,7 +15,6 @@ export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState("");
-
 
   useEffect(() => {
     const fetchData = async (page) => {
@@ -79,3 +79,4 @@ export default function Page() {
     </>
   );
 }
+
