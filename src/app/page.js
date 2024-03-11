@@ -5,6 +5,7 @@ import PhotoCard from "./components/ui/PhotoCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PaginationButtons from './components/ui/PaginationButtons';
+import {API_ENDPOINT} from "./services/index";
 
 export default function Page() {
   const [destinations, setDestinations] = useState([]);
@@ -19,7 +20,7 @@ export default function Page() {
     const fetchData = async (page) => {
       try {
         console.log('Fetching data for page:', page);
-        const response = await axios.get(`http://localhost:8000/api/?page=${page}`);
+        const response = await axios.get(`${API_ENDPOINT}/api/?page=${page}`);
         setDestinations(response.data.data);
         setTotalPages(response.data.last_page);
       } catch (error) {
@@ -42,7 +43,7 @@ export default function Page() {
       setSearchResults([]);
     } else {
       try {
-        const response = await axios.get(`http://localhost:8000/api/search?search=${searchTerm}`);
+        const response = await axios.get(`${API_ENDPOINT}/api/search?search=${searchTerm}`);
         setSearchResults(response.data);
         setError("");
       } catch (error) {
