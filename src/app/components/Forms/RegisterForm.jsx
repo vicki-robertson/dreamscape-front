@@ -19,7 +19,7 @@ export default function RegisterForm() {
     password: ""
   });
   const [message, setMessage] = useState("");
-  const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad del modal
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

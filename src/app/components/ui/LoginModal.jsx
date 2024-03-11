@@ -6,7 +6,7 @@ export default function LoginModal({ message, onClose }) {
     if (message) {
       const modalTimeout = setTimeout(() => {
         onClose();
-      }, 5000); 
+      }, 4000); 
 
       return () => clearTimeout(modalTimeout);
     }

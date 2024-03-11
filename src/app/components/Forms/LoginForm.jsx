@@ -18,7 +18,7 @@ export default function StartSession() {
   });
 
   const [message, setMessage] = useState('');
-  const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad del modal
+  const [showModal, setShowModal] = useState(false);
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,21 +33,6 @@ export default function StartSession() {
     });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await handleSubmit(e, formData, setMessage, setErrors, setShowModal);
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        const errorData = error.response.data.errors;
-        setErrors({
-          email: errorData.email ? errorData.email : "",
-          password: errorData.password ? errorData.password : ""
-        });
-      } else {
-        setMessage("Error: " + error.response.data.message);
-      }
-    }}
 
   const handleModalClose = () => {
     setShowModal(false);

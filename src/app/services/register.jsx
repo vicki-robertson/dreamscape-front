@@ -1,16 +1,6 @@
 import { API_ENDPOINT } from "./index";
 import axios from 'axios';
 
-  // export const handleSubmit = async (e, formData, setMessage, setErrors, setShowModal) => {
-  //   try {
-  //     const response = await axios.post(`${API_ENDPOINT}/api/register`, formData);
-  //     setMessage(response.data.message);
-  //     setShowModal(true);
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  // };
-
 
   export const handleSubmit = async (e, formData, setMessage, setErrors, setShowModal) => {
     e.preventDefault();
