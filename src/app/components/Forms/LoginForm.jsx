@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import InputBox from '../ui/InputBox';
-import axios from 'axios';
 import Button from '../ui/Button';
-import {handleSubmit} from '../../services/users'
+import {handleSubmit} from '../../services/login'
 
 export default function StartSession() {
   const [formData, setFormData] = useState({
