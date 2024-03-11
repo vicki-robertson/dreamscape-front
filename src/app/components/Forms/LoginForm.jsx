@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import InputBox from '../ui/InputBox';
-import axios from 'axios';
 import Button from '../ui/Button';
+import {handleSubmit} from '../../services/login'
 
 export default function StartSession() {
   const [formData, setFormData] = useState({
@@ -31,33 +31,10 @@ export default function StartSession() {
     });
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:8000/api/login', formData);
-      console.log(response.data);
-
-      if (response.status === 200) {
-        setMessage(response.data.message);
-        console.log(response.data.message);
-      }
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        const errorData = error.response.data.errors;
-        setErrors({
-          email: errorData.email ? errorData.email : "",
-          password: errorData.password ? errorData.password : ""
-        });
-      } else {
-        setMessage("Error: " + error.response.data.message);
-      }
-    }
-  };
-
   return (
     <div className='flex flex-col w-[370px] min-h-[358px] rounded-2xl border-4 items-center border-light-yellow pb-12'>
       <h2 className='text-m text-red font-bold pt-3 '>Acceso de usuario</h2>
-      <form onSubmit={handleSubmit} className='border-t-2 border-red flex flex-col'>
+      <form onSubmit={(e) => handleSubmit(e, formData, setMessage, setErrors)} className='border-t-2 border-red flex flex-col'>
         <label htmlFor='email' className='text-blue text-s font-bold pb-1 pt-6'>Email</label>
         <InputBox
           size='m'

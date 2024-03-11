@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import InputBox from "../ui/InputBox";
 import Button from "../ui/Button";
-import axios from "axios";
+import { handleSubmit } from "@/app/services/register";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -30,30 +30,11 @@ export default function RegisterForm() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:8000/api/register", formData);
-      setMessage(response.data.message);
-      console.log(response.data.message)
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        const errorData = error.response.data.errors;
-        setErrors({
-          name: errorData.name ? errorData.name : "",
-          email: errorData.email ? errorData.email : "",
-          password: errorData.password ? errorData.password : ""
-        });
-      } else {
-        setMessage("Error: " + error.response.data.message);
-      }
-    }
-  };
-
+  
   return (
     <div className="flex flex-col w-[370px] min-h-[487px] rounded-2xl border-4 items-center border-light-yellow pb-14">
       <h2 className="text-m text-red font-bold pt-3">Registro de usuario</h2>
-      <form onSubmit={handleSubmit} className="border-t-2 border-red flex flex-col">
+      <form onSubmit={(e) => handleSubmit(e, formData, setMessage, setErrors)} className="border-t-2 border-red flex flex-col">
         <label htmlFor="name" className="text-blue text-s font-bold pb-1 pt-6">
           Nombre
         </label>
