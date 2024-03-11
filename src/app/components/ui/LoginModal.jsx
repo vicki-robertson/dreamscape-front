@@ -1,34 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import styles from './LoginModal.css';
 
-export default function LoginModal() {
-  return (
-    <section className='w-80 h-[225px] desktop:h-[200px] desktop:w-[500px] bg-light-yellow rounded-3xl flex flex-col items-center justify-center'>
-        <h3 className='text-m text-blue w-[200px] desktop:w-80 text-center pb-7'>{response.data.message}</h3>
-    </section>
-  )
-}
-
-const Home = () => {
-  const [showModal, setShowModal] = useState(false);
-
+export default function LoginModal({ message, onClose }) {
   useEffect(() => {
-    const modalTimeout = setTimeout(() => {
-      setShowModal(true);
-    }, 2000);
+    if (message) {
+      const modalTimeout = setTimeout(() => {
+        onClose();
+      }, 5000); 
 
-    return () => clearTimeout(modalTimeout);
-  }, []);
+      return () => clearTimeout(modalTimeout);
+    }
+  }, [message, onClose]);
 
-  const handleModalClose = () => {
-    setShowModal(false);
+  const handleClose = () => {
+    onClose();
   };
-  
-  const cardRoles = ["PASADO", "PRESENTE", "FUTURO"];
 
   return (
-    <main className="bg-purple-medium pt-10 px-10">
-      <TarotDesk/>
-      {showModal && <Modal onClose={handleModalClose} />}
-    </main>
+    <div className={`modal ${message ? 'modal--show' : ''}`} onClick={handleClose}>
+      <section className={`${styles.modal__content} w-80 h-[225px] desktop:h-[200px] desktop:w-[500px] bg-light-yellow rounded-3xl flex flex-col items-center justify-center`} onClick={(e) => e.stopPropagation()}>
+        <h3 className='text-m text-blue w-[200px] desktop:w-80 text-center pb-7'>{message}</h3>
+      </section>
+    </div>
   );
-};
+}
