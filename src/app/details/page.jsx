@@ -9,7 +9,7 @@ function DetailsPage() {
   useEffect(() => {
     const fetchDestinationData = async () => {
       try {
-        const response = await fetch(`/api/destinations/${id}`); // Reemplaza 'id' con el ID correcto del destino
+        const response = await fetch(`/api/destinations/${id}`); // HOLA!
         if (!response.ok) {
           throw new Error('Failed to fetch destination data');
         }
