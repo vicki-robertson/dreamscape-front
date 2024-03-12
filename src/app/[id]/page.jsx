@@ -13,7 +13,7 @@ export default async function DetailsPage({params: {id}}) {
   return (
     <>
       <Header /> 
-      <DetailsCard destination={destination} />
+      {destination && <DetailsCard data={destination} />}
     </>
   );
 }
