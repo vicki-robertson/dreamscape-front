@@ -1,33 +1,135 @@
-"use client"
+"use client";
 
-import React, { useState} from 'react';
-import InputBox from '../ui/InputBox';
-import DoubleButton from '../ui/DoubleButton';
-import axios from 'axios';
+import React, { useState } from "react";
+import InputBox from "../ui/InputBox";
+import Button from "../ui/Button";
 
 const CreateDestination = () => {
-return (
-    <section className='flex items-center justify-center pt-[144px] pb-[171px] desktop:pt-[150px] desktop:pb-[251px]'>
-    <div className='flex sm:flex-col md:flex-row desktop:w-[733px] h-[509px] rounded-2xl border-4 border-light-yellow p-6'>
-    <div class=" items-center w-[300px] basis-1/2 p-4">
-        <h2 className='text-m text-red font-bold pt-3 '>Crear destino</h2>
-        <form /*onSubmit*/ className='border-t-2 border-red flex flex-col'>
-       <label for='titulo' className='text-blue text-s font-bold pb-1 pt-6'>Titulo</label>
-       <InputBox size='m' placeholder="Escribe titulo..." type="text" name="titulo" /*value={formData.email} onChange={handleChange}*//> 
-       <label for='Ubicación' className='text-blue text-s font-bold pb-1 pt-6'>Ubicación</label>
-       <InputBox size='m' placeholder="Escribe ubicación..." type="text" name="Ubicación" /*value={formData.password} onChange={handleChange}*/ /> 
-       <label for='Image' className='text-blue text-s font-bold pb-1 pt-6 mt-4'>Imagen</label>
-       <InputBox size='m' className={'mb-8 content=""'} placeholder="Sube una imagen ..." type="file" id='image' accept="image/*" name="Image" /*value={formData.password} onChange={handleChange}*/ /> 
-        <DoubleButton/>
-    </form>
-    </div>
-          <div class="basis-1/2 items-center desktop:w-[300px] mt-20">
-          <label for='razon' className='text-blue text-s font-bold pb-1 pt-6'>¿Por qué quieres viajar allí?</label>
-       <InputBox size='xl' placeholder="La explicación del porque quieres viajar allí antes  de 500 caracteres." id="razon" type="text" name="razon" /*value={formData.password} onChange={handleChange}*/ /> 
-          </div>
-    </div>
-        </section>
-)
-}
+  const [formData, setFormData] = useState({
+    title: "",
+    destination: "",
+    image: "",
+    reason: "",
+  });
+
+  const [errors, setErrors] = useState({
+    title: "",
+    destination: "",
+    image: "",
+    reason: "",
+  });
+
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" });
+  };
+
+  const handleCancel = () => {
+    setFormData({
+      title: "",
+      destination: "",
+      image: "",
+      reason: "",
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await apiService.register(formData);
+      setMessage(response.message);
+      setShowModal(true);
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        const errorData = error.response.data.errors;
+        setErrors({
+          title: errorData.title ? errorData.title : "",
+          destination: errorData.destination ? errorData.destination : "",
+          image: errorData.image ? errorData.image : "",
+          reason: errorData.reason ? errorData.reason : "",
+        });
+      } else {
+        setMessage("Error: " + error.response.data.message);
+      }
+    }
+  };
+
+
+//Modal goes here when created
+
+  return (
+    <section className="flex items-center justify-center pt-[144px] pb-[171px] desktop:pt-[150px] desktop:pb-[251px]">
+      <div className="flex sm:flex-col md:flex-row desktop:w-[733px] h-[509px] rounded-2xl border-4 border-light-yellow p-6">
+        <div className=" items-center w-[300px] basis-1/2 p-4">
+          <h2 className="text-m text-red font-bold pt-3 ">Crear destino</h2>
+          <form
+            onSubmit={handleSubmit}
+            className="border-t-2 border-red flex flex-col"
+          >
+            <label for="title" className="text-blue text-s font-bold pb-1 pt-6">
+              Titulo
+            </label>
+            <InputBox
+              size="m"
+              placeholder="Escribe titulo..."
+              type="text"
+              name="title"
+            />
+            <label
+              for="destination"
+              className="text-blue text-s font-bold pb-1 pt-6"
+            >
+              Ubicación
+            </label>
+            <InputBox
+              size="m"
+              placeholder="Escribe ubicación..."
+              type="text"
+              name="destination"
+            />
+            <label
+              for="Image"
+              className="text-blue text-s font-bold pb-1 pt-6 mt-4"
+            >
+              Imagen
+            </label>
+            <InputBox
+              size="m"
+              className="mb-8" 
+              placeholder="Sube una imagen ..."
+              type="file"
+              id="image"
+              accept="image/*"
+              name="Image"
+            />
+            <div className="flex flex-row gap-3">
+            <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
+            <Button
+              buttonColor="bg-red"
+              buttonText="Cancelar"
+              onClick={handleCancel}
+            />
+             </div>
+          </form>
+        </div>
+        <div className="basis-1/2 items-center desktop:w-[300px] mt-20">
+          <label for="reason" className="text-blue text-s font-bold pb-1 pt-6">
+            ¿Por qué quieres viajar allí?
+          </label>
+          <textarea
+              className="bg-light-yellow rounded-[20px] shadow-[inset_0px_4px_4px_#00000040] placeholder-[blue] text-s pl-4 focus:outline-none focus:border-[blue] focus:ring-1 focus:ring-[blue] invalid:border-[red] invalid:text-[red] focus:invalid:border-[red] focus:invalid:ring-[red] w-[300px] h-[370px]"
+              placeholder="Escribe porque quieres viajar a este lugar..."
+              id="reason"
+              name="reason"
+              value={formData.reason}
+              onChange={handleChange}
+            />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default CreateDestination;

@@ -1,7 +1,10 @@
-import Header from '../components/Header/Header';
-import CreateDestination from '../components/Forms/Create'
+"use client";
 
-export default function createDest () {
+import Header from '../components/Header/Header';
+import CreateDestination from '../components/Forms/Create';
+
+
+export default function createDestinationPage () {
     return (
         <>
         <Header/>
