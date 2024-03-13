@@ -1,6 +1,6 @@
 "use client"
 
-import { apiService } from "../../services/api.js";
+import { authService } from "../../services/authService.js";
 import React, { useState } from 'react';
 import InputBox from '../ui/InputBox';
 import Button from '../ui/Button';
@@ -36,7 +36,7 @@ export default function StartSession() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await apiService.login(formData);
+      const response = await authService.login(formData);
       setMessage(response.message);
       setShowModal(true);
     } catch (error) {

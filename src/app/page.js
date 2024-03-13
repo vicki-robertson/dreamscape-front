@@ -5,8 +5,7 @@ import PhotoCard from "./components/ui/PhotoCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PaginationButtons from './components/ui/PaginationButtons';
-import {API_ENDPOINT} from "./services/index";
-
+import { destinationService  } from "./services/destinationService"; // Importamos el servicio apiService
 
 export default function Page() {
   const [destinations, setDestinations] = useState([]);
@@ -20,11 +19,12 @@ export default function Page() {
     const fetchData = async (page) => {
       try {
         console.log('Fetching data for page:', page);
-        const response = await axios.get(`${API_ENDPOINT}/api/?page=${page}`);
-        setDestinations(response.data.data);
-        setTotalPages(response.data.last_page);
+        const data = await destinationService.getDestinationsByPage(page);
+        setDestinations(data.data);
+        setTotalPages(data.last_page);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setError("Error fetching data");
       }
     };
 
@@ -43,7 +43,7 @@ export default function Page() {
       setSearchResults([]);
     } else {
       try {
-        const response = await axios.get(`${API_ENDPOINT}/api/search?search=${searchTerm}`);
+        const response = await destinationService.searchDestinations(searchTerm);
         setSearchResults(response.data);
         setError("");
       } catch (error) {
@@ -58,6 +58,7 @@ export default function Page() {
       <Header onSearch={handleSearch} showSearchBar={true}/>
       <article className="flex flex-col justify-center items-center h-full">
         <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
+          
           {searchInput !== "" && searchResults.length === 0 ? (
             <p className="text-blue">{error}</p>
           ) : (
@@ -79,4 +80,3 @@ export default function Page() {
     </>
   );
 }
-

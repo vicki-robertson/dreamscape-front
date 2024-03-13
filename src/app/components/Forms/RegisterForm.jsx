@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputBox from "../ui/InputBox";
 import Button from "../ui/Button";
 import LoginModal from "../ui/LoginModal";
-import { apiService } from "../../services/api";
+import { authService } from "../../services/authService";
 
 export default function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -34,7 +34,7 @@ export default function RegisterForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await apiService.register(formData);
+      const response = await authService.register(formData);
       setMessage(response.message);
       setShowModal(true);
     } catch (error) {
