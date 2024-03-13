@@ -56,14 +56,13 @@ const CreateDestination = () => {
     }
   };
 
-
 //Modal goes here when created
 
   return (
-    <section className="flex items-center justify-center pt-[144px] pb-[171px] desktop:pt-[150px] desktop:pb-[251px]">
-      <div className="flex sm:flex-col md:flex-row desktop:w-[733px] h-[509px] rounded-2xl border-4 border-light-yellow p-6">
-        <div className=" items-center w-[300px] basis-1/2 p-4">
-          <h2 className="text-m text-red font-bold pt-3 ">Crear destino</h2>
+    <section className="flex items-center justify-center mobile:pt-2 pb-[171px] desktop:pt-[150px] desktop:pb-[251px]">
+      <div className="flex mobile:flex-col desktop:flex-row desktop:w-[733px] h-[509px] rounded-2xl border-4 border-light-yellow p-6">
+        <div className="items-center p-4">
+          <h2 className="text-m text-red font-bold pt-3 text-center">Crear destino</h2>
           <form
             onSubmit={handleSubmit}
             className="border-t-2 border-red flex flex-col"
@@ -104,7 +103,7 @@ const CreateDestination = () => {
               accept="image/*"
               name="Image"
             />
-            <div className="flex flex-row gap-3">
+            <div className="desktop:flex flex-row gap-3 mobile:hidden">
             <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
             <Button
               buttonColor="bg-red"
@@ -126,6 +125,14 @@ const CreateDestination = () => {
               value={formData.reason}
               onChange={handleChange}
             />
+            <div className="desktop:hidden mobile:flex flex-row gap-3">
+            <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
+            <Button
+              buttonColor="bg-red"
+              buttonText="Cancelar"
+              onClick={handleCancel}
+            />
+             </div>
         </div>
       </div>
     </section>
