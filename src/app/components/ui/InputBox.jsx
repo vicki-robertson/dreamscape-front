@@ -16,6 +16,7 @@ const inputVariants = cva('bg-light-yellow rounded-[20px] shadow-[inset_0px_4px_
     size: {
       s: 'w-[200px] h-[40px]',
       m: 'w-[300px] h-[40px]',
+      xl: 'w-[300px] h-[370px]',
     }
   }
 });
