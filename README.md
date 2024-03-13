@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# DREAMSCAPE TRAVEL  
 
-First, run the development server:
+Alongside [this backend repository](https://github.com/Jasz-17/dreamscape_back), this fullstack project involves the creation of a responsive website that allows users to post, edit, and delete their dream holiday destinations as well as view the holiday plans of other users. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![home page](public/assets/images/main-image.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Table of Contents
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- [Images](#images)
+- [Description](#description)
+- [Technologies](#technologies)
+- [Database Diagram](#databasediagram)
+- [Testing](#testing)
+- [Contributors](#contributors)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Images
 
-## Learn More
+![sign-up form](public/assets/images/sign-up.png)
+![details required message](public/assets/images/details-req.png)
+![invalid email message](public/assets/images/invalid-email.png)
+![already registered message](public/assets/images/registered.png)
+![log-in form](public/assets/images/log-in.png)
+![destination not found message](public/assets/images/not-found.png)
+![search function working](public/assets/images/search.png)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Description
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project involved the creation of multiple-page responsive website, using React, Next.js, PHP, and Laravel. The site design, as specified by the fictional client 'Happy Travel' via a detailed [Figma mock-up](https://www.figma.com/file/twPJOzEo5hZJZ7srsEt10y/HappyTravel?type=design&node-id=4-1343&mode=design&t=Ws3hTyk3DDJ71bok-0), features various unique elements and pages. These include a search bar for finding holiday destinations with ease, a registration form for new users, and a login form for existing users. The site itself features a gallery of personalized holiday destinations that registered users are able to add to, edit, and delete, and users without an account are able to view and search. 
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies 
+This project used the following technologies and their specific versions:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- React - 18
+- Next.js - 14.1.0
+- Tailwind CSS - 3.3.0
+- Node.js - 20.9.0
+- Vitest - 1.3.1
+- Cypress - 13.6.6
+- Axios - 1.6.7
+- Vitest - 1.3.1
+- Class Variance Authority (cva) - 0.7.0 
+-----
+- PHP - 8.1
+- Guzzle - 7.2
+- Laravel - 10.10
+- Sanctum - 3.3
+- Tinker - 2.8
+- Faker - 1.9.1
+- PHP Unit - 10.1
+- Composer - 2.6.6
+- MySQL - 8.0
+- Xampp - 3.3.0
+
+## Database Diagram
+
+   
+![Database diagram](/public/assets/images/database.png)
+
+
+
+## Testing
+
+## Contributors
+
+[Débora Menezes, Fullstack Developer](https://github.com/debora-smb) <br>
+[Jéssica Solózano, Fullstack Developer](https://github.com/jazs-17) <br>
+[Vicki Robertson, Fullstack Developer](https://github.com/vicki-robertson) <br>
+[Laura Artaza, Fullstack Developer](https://github.com/lolamindi) <br>
+
+---
+
+Back to: [Table of Contents](#table-of-contents)

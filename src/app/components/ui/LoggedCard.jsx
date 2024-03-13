@@ -1,7 +1,8 @@
 import Image from "next/image";
 import QuestionMark from "../../../../public/assets/icons/Info-icon.svg";
 import PhotoCard from "./PhotoCard";
-import EditDeleteIcons from "./EditDeleteIcons";
+import EditButton from "./EditButton";
+import DeleteButton from "./DeleteButton";
 
 function LoggedCard() {
   return (
@@ -14,8 +15,9 @@ function LoggedCard() {
         alt={"signo de interrogación"}
       />
       <PhotoCard />
-      <div className="float-right relative bottom-[74px] right-6">
-      <EditDeleteIcons/>
+      <div className="float-right relative bottom-[74px] right-6 gap-3">
+      <EditButton />
+      <DeleteButton />
       </div>
     </article>
   );

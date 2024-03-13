@@ -4,7 +4,7 @@ import LoginIcon from '../../../../public/assets/icons/Avatar-icon.svg'
 export default function LoginButton() {
   return (
     <div className="">
-      <a href="">
+      <a href="/register">
           <Image className=""
             src={LoginIcon}
             width={40}
