@@ -35,27 +35,48 @@ const CreateDestination = () => {
     }); 
   };
 
+ 
+      // const response = await apiService.register(formData);
+  //     setMessage(response.message);
+  //     setShowModal(true);
+  //   } catch (error) {
+  //     if (error.response && error.response.data.errors) {
+  //       const errorData = error.response.data.errors;
+  //       setErrors({
+  //         title: errorData.title ? errorData.title : "",
+  //         destination: errorData.destination ? errorData.destination : "",
+  //         image: errorData.image ? errorData.image : "",
+  //         reason: errorData.reason ? errorData.reason : "",
+  //       });
+  //     } else {
+  //       setMessage("Error: " + error.response.data.message);
+  //     }
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting form...");
     try {
-      const response = await apiService.register(formData);
+      const formData = new FormData();
+      formData.append('title', formData.title);
+      formData.append('destination', formData.destination);
+      formData.append('reason', formData.reason);
+      formData.append('image', formData.image); // Asegúrate de tener la imagen en formData
+  
+      const response = await destinationService.createDestination(formData);
+      console.log("API response:", response);
       setMessage(response.message);
       setShowModal(true);
     } catch (error) {
-      if (error.response && error.response.data.errors) {
-        const errorData = error.response.data.errors;
-        setErrors({
-          title: errorData.title ? errorData.title : "",
-          destination: errorData.destination ? errorData.destination : "",
-          image: errorData.image ? errorData.image : "",
-          reason: errorData.reason ? errorData.reason : "",
-        });
-      } else {
+      if (error.response && error.response.data && error.response.data.message) {
         setMessage("Error: " + error.response.data.message);
+      } else {
+        setMessage("Error desconocido");
       }
     }
   };
-
 //Modal goes here when created
 
   return (
@@ -67,7 +88,7 @@ const CreateDestination = () => {
             onSubmit={handleSubmit}
             className="border-t-2 border-red flex flex-col"
           >
-            <label for="title" className="text-blue text-s font-bold pb-1 pt-6">
+            <label htmlFor="title" className="text-blue text-s font-bold pb-1 pt-6">
               Titulo
             </label>
             <InputBox
@@ -77,7 +98,7 @@ const CreateDestination = () => {
               name="title"
             />
             <label
-              for="destination"
+              htmlFor="destination"
               className="text-blue text-s font-bold pb-1 pt-6"
             >
               Ubicación
@@ -89,7 +110,7 @@ const CreateDestination = () => {
               name="destination"
             />
             <label
-              for="Image"
+              htmlFor="Image"
               className="text-blue text-s font-bold pb-1 pt-6 mt-4"
             >
               Imagen
@@ -114,7 +135,7 @@ const CreateDestination = () => {
           </form>
         </div>
         <div className="basis-1/2 items-center desktop:w-[300px] mt-20">
-          <label for="reason" className="text-blue text-s font-bold pb-1 pt-6">
+          <label htmlFor="reason" className="text-blue text-s font-bold pb-1 pt-6">
             ¿Por qué quieres viajar allí?
           </label>
           <textarea
