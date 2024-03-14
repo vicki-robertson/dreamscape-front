@@ -3,7 +3,6 @@
 import Header from "./components/Header/Header";
 import PhotoCard from "./components/ui/PhotoCard";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import PaginationButtons from "./components/ui/PaginationButtons";
 import { destinationService } from "./services/destinationService";
 import Spinner from "./components/ui/Spinner";
@@ -85,7 +84,7 @@ export default function Page() {
       <Header onSearch={handleSearch} showSearchBar={true} />
       <article className="flex flex-col justify-center items-center h-full">
         {loading ? (
-          <Spinner /> // Render the spinner while loading
+          <Spinner /> 
         ) : (
           <>
             <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
