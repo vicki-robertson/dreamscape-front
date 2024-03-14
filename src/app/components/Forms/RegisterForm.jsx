@@ -61,7 +61,7 @@ export default function RegisterForm({ router }) {
   };
 
   return (
-    <div className="flex flex-col w-[370px] min-h-[487px] rounded-2xl border-4 items-center border-light-yellow pb-14">
+    <div id="register-form" className="flex flex-col w-[370px] min-h-[487px] rounded-2xl border-4 items-center border-light-yellow pb-14">
       <h2 className="text-m text-red font-bold pt-3">Registro de usuario</h2>
       <form onSubmit={handleSubmit} className="border-t-2 border-red flex flex-col">
         <label htmlFor="name" className="text-blue text-s font-bold pb-1 pt-6">

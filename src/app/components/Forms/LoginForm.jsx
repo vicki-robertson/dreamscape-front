@@ -64,7 +64,7 @@ export default function StartSession({router}) {
   };
 
   return (
-    <div className='flex flex-col w-[370px] min-h-[358px] rounded-2xl border-4 items-center border-light-yellow pb-12'>
+    <div id="login-form" className='flex flex-col w-[370px] min-h-[358px] rounded-2xl border-4 items-center border-light-yellow pb-12'>
       <h2 className='text-m text-red font-bold pt-3'>Acceso de usuario</h2>
       <form onSubmit={handleSubmit} className='border-t-2 border-red flex flex-col'>
         <label htmlFor='email' className='text-blue text-s font-bold pb-1 pt-6'>Email</label>
