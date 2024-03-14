@@ -13,4 +13,4 @@ test("The home page renders the PaginationButtons component without crashing", (
   render(<PaginationButtons />);
 });
 
-test ("The PaginationButtons component ")
+
