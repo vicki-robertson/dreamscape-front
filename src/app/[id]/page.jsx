@@ -1,20 +1,36 @@
-// "use client";
-
 import DetailsCard from "../components/ui/DetailsCard";
-import Header from "../components/Header/Header"; 
- 
-import { getDestinationById } from "../services/destinations";
+import Header from "../components/Header/Header";
+import { destinationService } from "../services/destinationService";
 
-export default async function DetailsPage({params: {id}}) {
-  console.log(id,"id");
-  const destination = await getDestinationById(id)
-  console.log(destination,"detailcard");
+export default function DetailsPage({ params: { id } }) {
+  const fetchData = async () => {
+    try {
+      console.log('Fetching data for detail:');
+      const destination = await destinationService.getDestinationById(id);
+      console.log(destination, "detailcard");
+      return destination;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  };
+
+  const renderDetails = async () => {
+    try {
+      const destination = await fetchData();
+      return <DetailsCard data={destination} />;
+    } catch (error) {
+      console.error('Error rendering details:', error);
+      return <p>Error rendering details.</p>;
+    }
+  };
 
   return (
     <>
-      <Header /> 
-      {destination && <DetailsCard data={destination} />}
+    <div className="mobile:hidden">
+      <Header />
+    </div>
+      {renderDetails()}
     </>
   );
 }
-
