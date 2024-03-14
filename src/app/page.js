@@ -3,7 +3,6 @@
 import Header from "./components/Header/Header";
 import PhotoCard from "./components/ui/PhotoCard";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import PaginationButtons from "./components/ui/PaginationButtons";
 import {  destinationService   } from "./services/destinationService"; 
 import Spinner from "./components/ui/Spinner";
