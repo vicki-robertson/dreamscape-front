@@ -7,9 +7,6 @@ import QuestionMark from "../../../../public/assets/icons/Info-icon.svg";
 function PhotoCard({ data, isLoggedIn, userDestinations }) {
   const isUserDestination = userDestinations.some(dest => dest.id === data.id);
 
-  console.log('isLoggedIn:', isLoggedIn);
-  console.log('isUserDestination:', isUserDestination);
-
   return (
     <article className="h-[373px] w-[285px] relative">
       <div className="overflow-hidden w-[285px] h-[300px]">
@@ -41,7 +38,7 @@ function PhotoCard({ data, isLoggedIn, userDestinations }) {
             {data.location}
           </span>
         </div>
-        {isLoggedIn && isUserDestination && (
+        {isLoggedIn && (
           <div className="flex h-[100%] w-1/4 gap-2" >
             <Link href={`/${data.id}`} className="flex items-center">
               <EditButton destinationId={data.id} />
