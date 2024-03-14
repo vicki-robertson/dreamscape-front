@@ -32,7 +32,7 @@ const CreateDestination = () => {
       destination: "",
       image: "",
       reason: "",
-    });
+    }); 
   };
 
   const handleSubmit = async (e) => {
