@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Link from 'next/link';
 import EditButton from "./EditButton";
@@ -8,16 +7,21 @@ import QuestionMark from "../../../../public/assets/icons/Info-icon.svg";
 function PhotoCard({ data, isLoggedIn, userDestinations }) {
   const isUserDestination = userDestinations.some(dest => dest.id === data.id);
 
+  console.log('isLoggedIn:', isLoggedIn);
+  console.log('isUserDestination:', isUserDestination);
+
   return (
     <article className="h-[373px] w-[285px] relative">
       <div className="overflow-hidden w-[285px] h-[300px]">
-        <Image
-          className="absolute right-3 top-2 z-30"
-          src={QuestionMark}
-          width={48}
-          height={48}
-          alt={"signo de interrogación"}
-        />
+        {isLoggedIn && (
+          <Image
+            className="absolute right-3 top-2 z-30"
+            src={QuestionMark}
+            width={48}
+            height={48}
+            alt={"signo de interrogación"}
+          />
+        )}
         <Link href={`/${data.id}`}>
           <Image
             className="rounded-2xl left-0 top-0 absolute z-20 h-[75%] object-cover"

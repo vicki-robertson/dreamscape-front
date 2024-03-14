@@ -10,7 +10,7 @@ export default function SignUpPage() {
     <>
         <Header showSearchBar={false}/>
         <section className='flex flex-col items-center justify-center pt-[144px] pb-[171px] desktop:pt-[150px] desktop:pb-[251px]'>
-          <RegisterForm router={router} />/
+          <RegisterForm router={router} />
         </section>  
     </>
   )
