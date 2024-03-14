@@ -11,7 +11,7 @@ export default function Header({ onSearch, showSearchBar }) {
                 <Logo/>
                 <li className="mobile:pt-4 list-none desktop:flex pb-4">
                     {showSearchBar && <SearchBar onSearch={onSearch}/>}
-                    <div className="mobile:hidden desktop:flex gap-4 pl-4">
+                    <div className="mobile:hidden desktop:flex gap-3">
                         <HomeButton />
                         <LoginButton /> 
                         <LogoutButton />

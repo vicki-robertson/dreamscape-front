@@ -27,7 +27,7 @@ export default function DetailsPage({ params: { id } }) {
 
   return (
     <>
-    <div className="mobile:hidden">
+    <div className="hidden desktop:block">
       <Header />
     </div>
       {renderDetails()}
