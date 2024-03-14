@@ -40,6 +40,7 @@ export default function StartSession({router}) {
       const response = await authService.login(formData);
       const token = response.token;
       localStorage.setItem("auth_token", token);
+      console.log(token);
       setMessage(response.message);
       setShowModal(true);
     } catch (error) {
