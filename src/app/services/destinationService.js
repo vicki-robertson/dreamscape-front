@@ -65,7 +65,6 @@ export const destinationService = {
     searchDestinations: async (searchTerm) => {
         try {
             const response = await axios.get(`/api/search?search=${searchTerm}`);
-            // console.log("Response from searchDestinations:", response);
             return response.data;
         } catch (error) {
             throw error;

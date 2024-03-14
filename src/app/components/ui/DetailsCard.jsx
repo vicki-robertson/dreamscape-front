@@ -1,10 +1,8 @@
-// "use client";
 
 import Image from "next/image";
 
 
 function DetailsCard({data}) {
-  console.log(data);
   return (
     <>
       <article className=" flex flex-col m-auto desktop:w-[900px] h-[450px] desktop:flex-row desktop:gap-10 desktop:my-20">
