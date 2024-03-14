@@ -63,7 +63,7 @@ const CreateDestination = () => {
       formData.append('title', formData.title);
       formData.append('destination', formData.destination);
       formData.append('reason', formData.reason);
-      formData.append('image', formData.image); // Asegúrate de tener la imagen en formData
+      formData.append('image', formData.image); 
   
       const response = await destinationService.createDestination(formData);
       console.log("API response:", response);
@@ -118,7 +118,7 @@ const CreateDestination = () => {
             <InputBox
               size="m"
               className="mb-8" 
-              placeholder="Sube una imagen ..."
+              placeholder="Sube una imagen..."
               type="file"
               id="image"
               accept="image/*"
