@@ -1,11 +1,21 @@
+"use client"
 import Logo from "@/app/components/ui/Logo";
 import SearchBar from "../ui/SearchBar";
 import HomeButton from "../ui/HomeButton";
 import LoginButton from "../ui/LoginButton";
 import LogoutButton from "../ui/LogoutButton";
+import { useState, useEffect } from "react";
 
 export default function Header({ onSearch, showSearchBar }) {
-    const isLoggedIn = localStorage.getItem("auth_token") !== null;
+    const [isLoggedIn, setIsLoggedIn] = useState(false); 
+
+    useEffect(() => {
+      const token = localStorage.getItem("auth_token"); 
+      if (token) {
+        setIsLoggedIn(true);
+      }
+    }, []);
+
 
     return (
         <>

@@ -43,21 +43,6 @@ export default function Page() {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchUserDestinations = async () => {
-      try {
-        const userToken = localStorage.getItem("auth_token");
-        const response = await destinationService.getUserDestinations(userToken);
-        setUserDestinations(response.data);
-      } catch (error) {
-        console.error('Error fetching user destinations:', error);
-      }
-    };
-
-    if (isLoggedIn) {
-      fetchUserDestinations();
-    }
-  }, [isLoggedIn]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
