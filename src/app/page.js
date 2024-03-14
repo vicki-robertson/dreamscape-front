@@ -71,10 +71,8 @@ export default function Page() {
       try {
         const response = await destinationService.searchDestinations(searchTerm);
         setSearchResults(response);
-        console.log(response);
         setError("");
       } catch (error) {
-        console.log(error.response);
         setSearchResults([]);
         setError(error.response.data.message);
       }
@@ -90,7 +88,7 @@ export default function Page() {
         ) : (
           <>
             <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
-              {searchInput !== "" ? (
+              {searchInput !== "" && searchResults.length === 0 ? (
                 <p className="text-blue">{error}</p>
               ) : (
                 (searchInput === "" ? destinations : searchResults).map(
