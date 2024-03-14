@@ -1,90 +1,116 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputBox from "../ui/InputBox";
 import Button from "../ui/Button";
-import LoginModal from "../ui/LoginModal";
+// import LoginModal from "../ui/LoginModal";
+import { destinationService } from "../../services/destinationService";
 
 
 
 const CreateDestination = () => {
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      console.log("Token generado:", storedToken); // Imprimir el token en la consola
+      setToken(storedToken);
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
-    title: "",
-    destination: "",
+    name: "",
+    location: "",
     image: "",
     reason: "",
   });
 
   const [errors, setErrors] = useState({
-    title: "",
-    destination: "",
+    name: "",
+    location: "",
     image: "",
     reason: "",
   });
 
   const [message, setMessage] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
+
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  //   setErrors({ ...errors, [e.target.name]: "" });
+  // };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
+    if (e.target.name === "image") {
+      setFormData({ ...formData, [e.target.name]: e.target.files[0] });
+    } else {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
   };
 
   const handleCancel = () => {
     setFormData({
-      title: "",
-      destination: "",
+      name: "",
+      location: "",
       image: "",
       reason: "",
     }); 
   };
 
  
-      // const response = await apiService.register(formData);
-  //     setMessage(response.message);
-  //     setShowModal(true);
-  //   } catch (error) {
-  //     if (error.response && error.response.data.errors) {
-  //       const errorData = error.response.data.errors;
-  //       setErrors({
-  //         title: errorData.title ? errorData.title : "",
-  //         destination: errorData.destination ? errorData.destination : "",
-  //         image: errorData.image ? errorData.image : "",
-  //         reason: errorData.reason ? errorData.reason : "",
-  //       });
-  //     } else {
-  //       setMessage("Error: " + error.response.data.message);
-  //     }
-  //   }
-  // };
 
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitting form...");
+  
     try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("title", formData.name);
+      formDataToSend.append("destination", formData.location);
+      formDataToSend.append("reason", formData.reason);
+      formDataToSend.append("image", formData.image);
+      formDataToSend.append("user_id", token);
+
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log("Submitting form...");
+  //   try {
       // const formData = new FormData();
       // formData.append('title', formData.title);
       // formData.append('destination', formData.destination);
       // formData.append('reason', formData.reason);
       // formData.append('image', formData.image); // Asegúrate de tener la imagen en formData
   
-      const response = await destinationService.createDestination(formData);
+      const response = await destinationService.createDestination(formDataToSend);
       console.log("API response:", response);
       setMessage(response.message);
-      setShowModal(true);
+      setFormData({
+        name: "",
+        location: "",
+        image: "",
+        reason: "",
+      });
+      // setShowModal(true);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      if (error.response && error.response.data && error.response.data.errors) {
+        // Manejar errores de validación del formulario
+        setErrors(error.response.data.errors);
+      } else if (error.response && error.response.data && error.response.data.message) {
+        // Mostrar mensaje de error de la API
         setMessage("Error: " + error.response.data.message);
       } else {
-        setMessage("Error desconocido");
+        // Error desconocido
+        setMessage("Error desconocido al enviar el formulario");
       }
     }
   };
-  const handleModalClose = () => {
-    setShowModal(false);
-  };
+  // const handleModalClose = () => {
+  //   setShowModal(false);
+  // };
 
   return (
     <section className="flex items-center justify-center mobile:pt-2 pb-[171px] desktop:pt-[150px] desktop:pb-[251px]">
@@ -95,19 +121,20 @@ const CreateDestination = () => {
             onSubmit={handleSubmit}
             className="border-t-2 border-red flex flex-col"
           >
-            <label htmlFor="title" className="text-blue text-s font-bold pb-1 pt-6">
+            <label htmlFor="name" className="text-blue text-s font-bold pb-1 pt-6">
               Titulo
             </label>
             <InputBox
               size="m"
               placeholder="Escribe titulo..."
               type="text"
-              name="title"
-              value={formData.title}
+              name="name"
+              value={formData.name}
               onChange={handleChange}
             />
+            {errors.name && <p className="text-red">{errors.name}</p>}
             <label
-              htmlFor="destination"
+              htmlFor="location"
               className="text-blue text-s font-bold pb-1 pt-6"
             >
               Ubicación
@@ -116,12 +143,12 @@ const CreateDestination = () => {
               size="m"
               placeholder="Escribe ubicación..."
               type="text"
-              name="destination"
-              value={formData.destination}
+              name="location"
+              value={formData.location}
               onChange={handleChange}
             />
             <label
-              htmlFor="Image"
+              htmlFor="image"
               className="text-blue text-s font-bold pb-1 pt-6 mt-4"
             >
               Imagen
@@ -133,8 +160,7 @@ const CreateDestination = () => {
               type="file"
               id="image"
               accept="image/*"
-              name="Image"
-              value={formData.image}
+              name="image"
               onChange={handleChange}
             />
             <div className="desktop:flex flex-row gap-3 mobile:hidden">
@@ -169,7 +195,7 @@ const CreateDestination = () => {
              </div>
         </div>
       </div>
-      {showModal && <LoginModal message={message} onClose={handleModalClose} />}
+      {/* {showModal && <LoginModal message={message} onClose={handleModalClose} />} */}
     </section>
   );
 };

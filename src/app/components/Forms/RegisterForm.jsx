@@ -36,6 +36,7 @@ export default function RegisterForm() {
     try {
       const response = await authService.register(formData);
       setMessage(response.message);
+      localStorage.setItem("token", response.token); 
       setShowModal(true);
     } catch (error) {
       if (error.response && error.response.data.errors) {
