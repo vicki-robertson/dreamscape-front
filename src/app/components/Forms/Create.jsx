@@ -68,8 +68,8 @@ const CreateDestination = () => {
   
     try {
       const formDataToSend = new FormData();
-      formDataToSend.append("title", formData.name);
-      formDataToSend.append("destination", formData.location);
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("location", formData.location);
       formDataToSend.append("reason", formData.reason);
       formDataToSend.append("image", formData.image);
       formDataToSend.append("user_id", token);
