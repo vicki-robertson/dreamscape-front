@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import InputBox from "../ui/InputBox";
 import Button from "../ui/Button";
+import LoginModal from "../ui/LoginModal";
+
+
 
 const CreateDestination = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +23,8 @@ const CreateDestination = () => {
   });
 
   const [message, setMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,11 +64,11 @@ const CreateDestination = () => {
     e.preventDefault();
     console.log("Submitting form...");
     try {
-      const formData = new FormData();
-      formData.append('title', formData.title);
-      formData.append('destination', formData.destination);
-      formData.append('reason', formData.reason);
-      formData.append('image', formData.image); // Asegúrate de tener la imagen en formData
+      // const formData = new FormData();
+      // formData.append('title', formData.title);
+      // formData.append('destination', formData.destination);
+      // formData.append('reason', formData.reason);
+      // formData.append('image', formData.image); // Asegúrate de tener la imagen en formData
   
       const response = await destinationService.createDestination(formData);
       console.log("API response:", response);
@@ -77,7 +82,9 @@ const CreateDestination = () => {
       }
     }
   };
-//Modal goes here when created
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
 
   return (
     <section className="flex items-center justify-center mobile:pt-2 pb-[171px] desktop:pt-[150px] desktop:pb-[251px]">
@@ -96,6 +103,8 @@ const CreateDestination = () => {
               placeholder="Escribe titulo..."
               type="text"
               name="title"
+              value={formData.title}
+              onChange={handleChange}
             />
             <label
               htmlFor="destination"
@@ -108,6 +117,8 @@ const CreateDestination = () => {
               placeholder="Escribe ubicación..."
               type="text"
               name="destination"
+              value={formData.destination}
+              onChange={handleChange}
             />
             <label
               htmlFor="Image"
@@ -123,6 +134,8 @@ const CreateDestination = () => {
               id="image"
               accept="image/*"
               name="Image"
+              value={formData.image}
+              onChange={handleChange}
             />
             <div className="desktop:flex flex-row gap-3 mobile:hidden">
             <Button buttonColor="bg-green" buttonText="Aceptar" type="submit" />
@@ -156,6 +169,7 @@ const CreateDestination = () => {
              </div>
         </div>
       </div>
+      {showModal && <LoginModal message={message} onClose={handleModalClose} />}
     </section>
   );
 };
