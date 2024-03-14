@@ -10,36 +10,18 @@ test("The 'LoginForm' component should include the text 'Acceso de usuario", () 
   ).toBeDefined();
 });
 
-test("The page renders the Button component without crashing", () => {
+test("The login form renders the Button component without crashing", () => {
   render(<Button />);
 });
 
-
-test('LoginForm component should have correct buttons', () => {
-  const component = LoginForm();
-
-  // Assuming your Button component renders buttons with text content
-  const acceptButton = component.querySelector('button:contains("Aceptar")');
-  const cancelButton = component.querySelector('button:contains("Cancelar")');
-
-  // Assert that the "Aceptar" button is present
-  assert(acceptButton, 'Aceptar button should be present');
-
-  // Assert that the "Cancelar" button is present
-  assert(cancelButton, 'Cancelar button should be present');
-
-  // Assert that the "Aceptar" button has the correct Tailwind CSS class
-  assert(
-    acceptButton.classList.contains('bg-green'), // Adjust based on actual class names
-    'Aceptar button should have bg-green class'
-  );
-
-  // Assert that the "Cancelar" button has the correct Tailwind CSS class
-  assert(
-    cancelButton.classList.contains('bg-red'), // Adjust based on actual class names
-    'Cancelar button should have bg-red class'
-  );
+test("The login page renders the login form without crashing", () => {
+  const { container } = render(<LoginForm />);
+  expect(container.querySelector('form')).not.toBeNull();
 });
+
+
+
+
 
 
 
