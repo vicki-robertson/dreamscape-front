@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CreateIcon from "../../../../public/assets/icons/Create-icon.svg";
 
-export default function HomeButton() {
+export default function AddButton() {
   return (
     <div className="">
       <a href="">
