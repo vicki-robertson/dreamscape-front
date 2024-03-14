@@ -21,14 +21,15 @@ export default function DetailsPage({ params: { id } }) {
       return <DetailsCard data={destination} />;
     } catch (error) {
       console.error('Error rendering details:', error);
-      // Handle error rendering details here
       return <p>Error rendering details.</p>;
     }
   };
 
   return (
     <>
+    <div className="mobile:hidden">
       <Header />
+    </div>
       {renderDetails()}
     </>
   );
