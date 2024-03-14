@@ -4,7 +4,8 @@ import Button from "../ui/Button";
 import LoginModal from "../ui/LoginModal";
 import { authService } from "../../services/authService";
 
-export default function RegisterForm() {
+
+export default function RegisterForm({ router }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +18,7 @@ export default function RegisterForm() {
   });
   const [message, setMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,6 +37,8 @@ export default function RegisterForm() {
     e.preventDefault();
     try {
       const response = await authService.register(formData);
+      const token = response.token;
+      localStorage.setItem("auth_token", token);
       setMessage(response.message);
       setShowModal(true);
     } catch (error) {
@@ -53,6 +57,7 @@ export default function RegisterForm() {
 
   const handleModalClose = () => {
     setShowModal(false);
+    router.push("/");
   };
 
   return (
