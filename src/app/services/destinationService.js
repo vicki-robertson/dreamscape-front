@@ -8,7 +8,7 @@ axios.defaults.headers.post['Accept'] = 'application/json';
 axios.defaults.withCredentials = true;
 
 axios.interceptors.request.use(function (config) {
-    const token = localStorage.getItem('auth_token');
+    const token = typeof localStorage !== 'undefined' ? localStorage.getItem('auth_token') : null;
     config.headers.Authorization = token ? `Bearer ${token}` : '';
     return config;
 });
