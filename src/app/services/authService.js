@@ -32,7 +32,7 @@ export const authService = {
     },
     logout: async () => {
         try {
-            const response = await axios.post(`/api/user/logout`);
+            const response = await axios.post(`/api/logout`);
             return response.data;
         } catch (error) {
             throw error;
