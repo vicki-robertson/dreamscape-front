@@ -45,7 +45,6 @@ export default function Page() {
 
   const getDestinationData = async (page) => {
     try {
-      // const data = window.innerWidth <= 768 ? await destinationService.getDestinations() : await destinationService.getDestinationsByPage(page);
       const data = await destinationService.getDestinationsByPage(page);
       return data;
     } catch (error) {

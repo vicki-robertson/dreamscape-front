@@ -5,12 +5,9 @@ import { destinationService } from "../services/destinationService";
 export default function DetailsPage({ params: { id } }) {
   const fetchData = async () => {
     try {
-      console.log('Fetching data for detail:');
       const destination = await destinationService.getDestinationById(id);
-      console.log(destination, "detailcard");
       return destination;
     } catch (error) {
-      console.error('Error fetching data:', error);
       throw error;
     }
   };
