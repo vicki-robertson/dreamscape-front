@@ -43,9 +43,15 @@ export const destinationService = {
             const response = await axios.post(`/api/destinations`, destinationData);
             return response.data;
         } catch (error) {
-            throw error;
+            if (error.response && error.response.status === 422) {
+
+                throw new Error(error.response.data.errors);
+            } else {
+                throw error;
+            }
         }
     },
+
     updateDestination: async (id, destinationData) => {
         try {
             const response = await axios.put(`/api/destinations/${id}`, destinationData);
