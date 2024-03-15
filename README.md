@@ -62,7 +62,7 @@ This data base diagram shows that there is a one to many relationship as single 
 
 
 ## Testing
-In the front-end, this project used Vitest for unit testing and Cypress for end-to-end testing. Combined, these tests verified that the various pages and their components were being rendered properly while also ensuring a smooth user experience by simulating actions such as logging in and searching destinations. 
+In the front-end, this project used Vitest for unit testing and Cypress for end-to-end testing. Combined, these tests verified that the various pages and their components were being rendered properly while also ensuring a smooth user experience by simulating actions such as logging in and registering as a new user. 
 
 In the back-end, this project used PHPUnit to test user routes and endpoint access when authorized or not.
 
