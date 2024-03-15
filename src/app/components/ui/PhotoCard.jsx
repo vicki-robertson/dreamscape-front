@@ -3,9 +3,15 @@ import Link from 'next/link';
 import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import QuestionMark from "../../../../public/assets/icons/Info-icon.svg";
+import { useState } from "react";
 
-function PhotoCard({ data, isLoggedIn, userDestinations }) {
+function PhotoCard({ data, isLoggedIn, userDestinations, onDelete }) {
   const isUserDestination = userDestinations.some(dest => dest.id === data.id);
+
+  const handleDeleteDestination = (destinationId) => {
+    const updatedDestinations = destinations.filter(dest => dest.id !== destinationId);
+    setDestinations(updatedDestinations);
+  };
 
   return (
     <article className="h-[373px] w-[285px] relative">
@@ -43,7 +49,7 @@ function PhotoCard({ data, isLoggedIn, userDestinations }) {
             <Link href={`/${data.id}`} className="flex items-center">
               <EditButton destinationId={data.id} />
             </Link>
-            <DeleteButton destinationId={data.id} />
+            <DeleteButton destinationId={data.id} onDelete={onDelete} />
           </div>
         )}
       </div>

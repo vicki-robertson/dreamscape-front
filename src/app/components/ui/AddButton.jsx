@@ -4,7 +4,7 @@ import CreateIcon from "../../../../public/assets/icons/Create-icon.svg";
 export default function AddButton() {
   return (
     <div className="">
-      <a href="">
+      <a href="/create-dest">
         <Image
           className=""
           src={CreateIcon}

@@ -4,7 +4,7 @@ import Image from "next/image";
 function EditButton() {
   return (
     <button className="">
-      <a href="/">
+      <a href="/create-dest">
         <Image
           className="relative mt-1"
           src={EditIcon}
