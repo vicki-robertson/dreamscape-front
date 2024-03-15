@@ -19,22 +19,30 @@ export default function Page() {
   const [userDestinations, setUserDestinations] = useState([]);
 
   useEffect(() => {
-    const fetchData = async (page) => {
-      try {
-        setLoading(true);
-        const data = await getDestinationData(page);
-        setDestinations(data.data);
-        setTotalPages(data.last_page);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // const fetchData = async () => {
+       destinationService.getDestinations().then(response => {
+        setDestinations(response)
+      }).catch(error => {
+        console.log(error)
+      })
+
+      
+    //   try {
+    //     setLoading(true);
+    //     const data = await getDestinationData();
+    //     setDestinations(data.data);
+    //     console.log(data)
+    //     // setTotalPages(data.last_page);
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    
 
 
-    fetchData(currentPage);
-  }, [currentPage]);
+    // fetchData(currentP);
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -43,19 +51,19 @@ export default function Page() {
     }
   }, []);
 
-  const getDestinationData = async (page) => {
-    try {
-      // const data = window.innerWidth <= 768 ? await destinationService.getDestinations() : await destinationService.getDestinationsByPage(page);
-      const data = await destinationService.getDestinationsByPage(page);
-      return data;
-    } catch (error) {
-      throw error;
-    }
-  };
+  // const getDestinationData = async () => {
+  //   try {
+  //     // const data = window.innerWidth <= 768 ? await destinationService.getDestinations() : await destinationService.getDestinationsByPage(page);
+  //     const data = await destinationService.getDestinations()
+  //     return data;
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
+  // const handlePageChange = (page) => {
+  //   setCurrentPage(page);
+  // };
 
   const handleSearch = async (searchTerm) => {
     setSearchInput(searchTerm);
@@ -77,9 +85,9 @@ export default function Page() {
     <>
       <Header onSearch={handleSearch} showSearchBar={true} />
       <article className="flex flex-col justify-center items-center h-full">
-        {loading ? (
+        {/* {loading ? (
           <Spinner />
-        ) : (
+        ) : ( */}
           <>
             <div className="grid grid-cols-1 desktop:grid-cols-4 gap-x-6 gap-y-6 my-6 desktop:mx-16">
               {searchInput !== "" && searchResults.length === 0 ? (
@@ -92,9 +100,10 @@ export default function Page() {
                 ))
               )}
             </div>
-            <PaginationButtons currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+            {/* <PaginationButtons currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} /> */}
           </>
-        )}
+        {/* )}  */}
+        
       </article>
     </>
   );
