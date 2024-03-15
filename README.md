@@ -54,9 +54,11 @@ This project used the following technologies and their specific versions:
 - Composer - 2.6.6
 
 ## Database Diagram
+This data base diagram shows that there is a one to many relationship as single users can create an unlimited number of destinations. The primary keys of both the users table and destinations table are their ids while the foreign key "user_id" on destinations is what connects the two tables, ensuring that the user's id is attached to the destination when created, identifying them as the only ones able to edit or delete the destination. 
 
    
 ![Database diagram](/public/assets/images/database.png)
+
 
 
 ## Testing
