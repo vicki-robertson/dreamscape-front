@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import InputBox from '../ui/InputBox';
 import Button from '../ui/Button';
 import LoginModal from "../ui/LoginModal";
+import axios from "axios";
 
 
 export default function StartSession({router}) {
@@ -34,29 +35,31 @@ export default function StartSession({router}) {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await authService.login(formData);
-      const token = response.token;
-      localStorage.setItem("auth_token", token);
-      setMessage(response.message);
-      setShowModal(true);
-    } catch (error) {
-      if (error.response && error.response.data.errors) {
-        const errorData = error.response.data.errors;
-        setErrors({
-          email: errorData.email || "",
-          password: errorData.password || ""
-        });
-      } else if (error.response && error.response.data.message) {
-        setMessage(error.response.data.message);
+    axios.get('/sanctum/csrf-cookie').then(res => {
+      authService.login(formData).then(response => {
+        console.log(formData);
+        console.log(response);
+        const token = response.token;
+        localStorage.setItem("auth_token", token);
+        setMessage(response.message);
         setShowModal(true);
-      } else {
-        console.error('Error:', error);
-      }
-    }
-  };
+      }).catch(error => {
+        if (error.response && error.response.data.errors) {
+          const errorData = error.response.data.errors;
+          setErrors({
+            email: errorData.email || "",
+            password: errorData.password || ""
+          });
+        } else if (error.response && error.response.data.message) {
+          setMessage(error.response.data.message);
+          setShowModal(true);
+        } else {
+          console.error('Error:', error);
+        }
+      })
+    })};
 
   const handleModalClose = () => {
     setShowModal(false);

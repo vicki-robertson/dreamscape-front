@@ -6,6 +6,7 @@ axios.defaults.baseURL = API_ENDPOINT;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Accept'] = 'application/json';
 axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
 
 axios.interceptors.request.use(function (config) {
     const token = typeof localStorage !== 'undefined' ? localStorage.getItem('auth_token') : null;
@@ -17,6 +18,7 @@ export const destinationService = {
     getDestinations: async () => {
         try {
             const response = await axios.get(`/api/`);
+            console.log(response);
             return response.data;
         } catch (error) {
             throw error;
